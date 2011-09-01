@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(BOARD_HAS_SENSOR),true)
+ifeq ($(BOARD_HAS_SENSORS),true)
 LOCAL_PATH := $(call my-dir)
 
 ifneq ($(TARGET_SIMULATOR),true)
@@ -31,6 +31,10 @@ LOCAL_CPPFLAGS += -DACCELEROMETER_SENSOR_MMA8451
 else
  ifeq ($(SENSOR_MMA8450),true)
  LOCAL_CPPFLAGS += -DACCELEROMETER_SENSOR_MMA8450
+ else
+  ifeq ($(SENSOR_MMA7660),true)
+  LOCAL_CPPFLAGS += -DACCELEROMETER_SENSOR_MMA7660
+  endif
  endif
 endif
 

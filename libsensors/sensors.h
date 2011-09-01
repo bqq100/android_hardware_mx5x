@@ -73,12 +73,18 @@ __BEGIN_DECLS
   #define LSG                         (4096.0f) // 4096 LSG = 1G for MMA8451
 #elif defined(ACCELEROMETER_SENSOR_MMA8450)
   #define LSG                         (1024.0f) // 1024 LSG = 1G for MMA8450
+#elif defined(ACCELEROMETER_SENSOR_MMA7660)
+  #define LSG                         (21.3f)
 #else
   #define LSG                         (720.0f)
 #endif
 
 // conversion of acceleration data to SI units (m/s^2)
-#define RANGE_A                     (2*GRAVITY_EARTH)
+#if defined(ACCELEROMETER_SENSOR_MMA7660)
+  #define RANGE_A                   (1.5*GRAVITY_EARTH)
+#else
+  #define RANGE_A                   (2*GRAVITY_EARTH)
+#endif
 #define CONVERT_A                   (GRAVITY_EARTH / LSG)
 #define CONVERT_A_X                 (CONVERT_A)
 #define CONVERT_A_Y                 (-CONVERT_A)

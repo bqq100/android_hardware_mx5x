@@ -45,6 +45,8 @@ AccelSensor::AccelSensor()
     data_name = "mma8451";
 #elif defined(ACCELEROMETER_SENSOR_MMA8450)
     data_name = "mma8450";
+#elif defined(ACCELEROMETER_SENSOR_MMA7660)
+    data_name = "mma7660";
 #else
 #error you must define accelerometer properly
     data_name = NULL;
@@ -259,6 +261,9 @@ int AccelSensor::readEvents(sensors_event_t* data, int count)
 void AccelSensor::processEvent(int code, int value)
 {
     float temp_x = 0.0f, temp_y = 0.0f, raw_x_ev = 0.0f, raw_y_ev = 0.0f;
+
+    if ( value >= 32 )
+        value = value - 64; 
 
     switch (code) {
         case EVENT_TYPE_ACCEL_X:

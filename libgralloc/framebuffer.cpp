@@ -58,7 +58,7 @@ extern "C" {
 /*****************************************************************************/
 
 // numbers of buffers for page flipping
-#define NUM_BUFFERS 3
+#define NUM_BUFFERS 2
 
 enum {
     PAGE_FLIP = 0x00000001,
@@ -1016,7 +1016,7 @@ int mapFrameBufferLocked(struct private_module_t* module)
      */
 
     int err;
-    size_t fbSize = roundUpToPageSize(finfo.line_length * info.yres_virtual);
+    size_t fbSize = (finfo.line_length * info.yres_virtual);
     module->framebuffer = new private_handle_t(dup(fd), fbSize,
             private_handle_t::PRIV_FLAGS_USES_PMEM);
 

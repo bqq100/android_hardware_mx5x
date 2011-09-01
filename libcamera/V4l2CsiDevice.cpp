@@ -340,15 +340,15 @@ namespace android{
 
         // Set rotation
         ctrl.id = V4L2_CID_MXC_ROT;
-        if (pCapcfg->rotate == SENSOR_PREVIEW_BACK_REF)
-            ctrl.value = V4L2_MXC_CAM_ROTATE_NONE;
-        else if (pCapcfg->rotate == SENSOR_PREVIEW_VERT_FLIP)
-            ctrl.value = V4L2_MXC_CAM_ROTATE_VERT_FLIP;
-        else if (pCapcfg->rotate == SENSOR_PREVIEW_HORIZ_FLIP)
-            ctrl.value = V4L2_MXC_CAM_ROTATE_HORIZ_FLIP;
-        else if (pCapcfg->rotate == SENSOR_PREVIEW_ROATE_180)
-            ctrl.value = V4L2_MXC_CAM_ROTATE_180;
-        else
+       // if (pCapcfg->rotate == SENSOR_PREVIEW_BACK_REF)
+       //     ctrl.value = V4L2_MXC_CAM_ROTATE_NONE;
+       // else if (pCapcfg->rotate == SENSOR_PREVIEW_VERT_FLIP)
+       //     ctrl.value = V4L2_MXC_CAM_ROTATE_VERT_FLIP;
+       // else if (pCapcfg->rotate == SENSOR_PREVIEW_HORIZ_FLIP)
+       //     ctrl.value = V4L2_MXC_CAM_ROTATE_HORIZ_FLIP;
+       // else if (pCapcfg->rotate == SENSOR_PREVIEW_ROATE_180)
+       //     ctrl.value = V4L2_MXC_CAM_ROTATE_180;
+       // else
             ctrl.value = V4L2_MXC_ROTATE_NONE;
 
         if (ioctl(mCameraDevice, VIDIOC_S_CTRL, &ctrl) < 0) {
